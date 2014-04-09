@@ -1,0 +1,6 @@
+## File managed by Puppet
+User_Alias TOMCAT_ADMIN = <%= @sudo_user_alias.select { |a| not (a == :undef or a.empty?) }.join(', ') %>
+Cmnd_Alias TOMCAT_ADMIN = <%= @sudo_cmnd %>
+TOMCAT_ADMIN ALL=(tomcat) ALL : ALL=(root) TOMCAT_ADMIN
+##
+
