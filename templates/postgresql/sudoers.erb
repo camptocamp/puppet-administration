@@ -1,0 +1,6 @@
+## File managed by Puppet
+User_Alias POSTGRESQL_ADMIN = <%= @sudo_user_alias.select { |a| not (a == :undef or a.empty?) }.join(', ') %>
+Cmnd_Alias POSTGRESQL_ADMIN = <%= @sudo_cmnd %>
+POSTGRESQL_ADMIN ALL=(postgres) ALL : ALL=(root) POSTGRESQL_ADMIN
+##
+
