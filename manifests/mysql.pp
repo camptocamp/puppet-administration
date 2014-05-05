@@ -1,5 +1,5 @@
 class administration::mysql (
-  $sudo_user = $sudo_mysql_admin_user,
+  $sudo_user = undef,
 ) {
 
   $sudo_user_alias = flatten(['%mysql-admin', $sudo_user])
