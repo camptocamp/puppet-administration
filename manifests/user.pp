@@ -2,7 +2,7 @@ define administration::user (
   $ensure = present,
   $from   = undef,
 ) {
-  
+
   case $ensure {
     'absent': {
       sudo::conf {"sudo-su-${name}":
@@ -19,7 +19,7 @@ define administration::user (
           $_from = join($from, ',')
         }
         else {
-          fail "'from' must be a string or array in administration::user[$name]"
+          fail "'from' must be a string or array in administration::user[${name}]"
         }
       }
 
@@ -29,7 +29,7 @@ define administration::user (
       }
     }
 
-    default: { fail "'ensure' must be 'present' or 'absent' in administration::user[$name]" }
+    default: { fail "'ensure' must be 'present' or 'absent' in administration::user[${name}]" }
   }
 
 }
