@@ -1,0 +1,5 @@
+fixtures:
+  repositories:
+    sudo: https://github.com/saz/puppet-sudo.git
+  symlinks:
+    administration: "#{source_dir}"
