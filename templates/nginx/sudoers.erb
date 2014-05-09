@@ -1,0 +1,14 @@
+## File managed by Puppet
+<% if @sudo_user -%>
+User_Alias NGINX_ADMIN = %nginx-admin,<%= @sudo_user %>
+<% else -%>
+User_Alias NGINX_ADMIN = %nginx-admin
+<% end -%>
+<% if @sudo_cmnd -%>
+Cmnd_Alias NGINX_ADMIN = <%= @sudo_cmnd %>
+<% else -%>
+Cmnd_Alias NGINX_ADMIN = /etc/init.d/nginx, /bin/su <%= @nginx_user %>, /bin/su - <%= @nginx_user %>, /usr/sbin/nginx
+<% end -%>
+NGINX_ADMIN ALL=(<%= @nginx_user %>) ALL : ALL=(root) NGINX_ADMIN
+##
+
