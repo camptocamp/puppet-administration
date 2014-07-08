@@ -1,0 +1,15 @@
+## File managed by Puppet
+<% if @sudo_user -%>
+User_Alias OPENLDAP_ADMIN = %openldap-admin,<%= @sudo_user %>
+<% else -%>
+User_Alias OPENLDAP_ADMIN = %openldap-admin
+<% end -%>
+<% if @admin_cmnd -%>
+Cmnd_Alias OPENLDAP_ADMIN = <%= @admin_cmnd %>
+<% else -%>
+Cmnd_Alias OPENLDAP_ADMIN = /etc/init.d/slapd, /usr/sbin/slapadd, /usr/sbin/slapcat
+<% end -%>
+OPENLDAP_ADMIN ALL=(openldap) ALL : ALL=(root) OPENLDAP_ADMIN
+##
+
+
