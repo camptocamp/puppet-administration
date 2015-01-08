@@ -1,6 +1,6 @@
 fixtures:
   repositories:
     stdlib: https://github.com/puppetlabs/puppetlabs-stdlib.git
-    sudo: https://github.com/saz/puppet-sudo.git
+    sudo: https://github.com/camptocamp/puppet-sudo.git
   symlinks:
     administration: "#{source_dir}"
