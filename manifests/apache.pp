@@ -5,8 +5,8 @@ class administration::apache (
 ) {
 
   $distro_specific_apache_sudo = $::osfamily ? {
-    Debian => '/usr/sbin/apache2ctl',
-    RedHat => '/usr/sbin/apachectl, /sbin/service httpd',
+    'Debian' => '/usr/sbin/apache2ctl',
+    'RedHat' => '/usr/sbin/apachectl, /sbin/service httpd',
   }
 
   group { 'apache-admin':
@@ -16,13 +16,13 @@ class administration::apache (
 
   # used in erb template
   $wwwpkgname = $::osfamily ? {
-    Debian => 'apache2',
-    RedHat => 'httpd',
+    'Debian' => 'apache2',
+    'RedHat' => 'httpd',
   }
 
   $wwwuser    = $::osfamily ? {
-    Debian => 'www-data',
-    RedHat => 'apache',
+    'Debian' => 'www-data',
+    'RedHat' => 'apache',
   }
 
   $sudo_group = '%apache-admin'
