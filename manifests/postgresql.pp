@@ -8,7 +8,7 @@
 #  - definition sudo::conf from module saz/puppet-sudo
 #
 class administration::postgresql (
-  $sudo_user = '',
+  $sudo_user = undef,
 ) {
   $sudo_group = '%postgresql-admin'
   $sudo_user_alias = flatten([$sudo_group, $sudo_user])
