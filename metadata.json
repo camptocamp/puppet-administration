@@ -1,0 +1,50 @@
+{
+  "name": "camptocamp-administration",
+  "version": "0.1.0",
+  "author": "Camptocamp",
+  "summary": "Puppet Administration module",
+  "license": "Apache-2.0",
+  "source": "https://github.com/camptocamp/puppet-administration",
+  "project_page": "https://github.com/camptocamp/puppet-administration",
+  "issues_url": "https://github.com/camptocamp/puppet-administration/issues",
+  "dependencies": [
+  ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": "3.x"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": "3.x"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    }
+  ],
+  "puppet_version": [
+    "2.7",
+    "3.0",
+    "3.1",
+    "3.2",
+    "3.3",
+    "3.4",
+    "3.5",
+    "3.6",
+    "3.7"
+  ]
+}
