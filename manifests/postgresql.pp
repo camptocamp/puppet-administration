@@ -12,7 +12,7 @@ class administration::postgresql (
 ) {
   $sudo_group = '%postgresql-admin'
   $sudo_user_alias = flatten([$sudo_group, $sudo_user])
-  $sudo_cmnd = '/etc/init.d/postgresql, /etc/init.d/postgresql-*, /bin/su postgres, /bin/su - postgres'
+  $sudo_cmnd = '/etc/init.d/postgresql, /etc/init.d/postgresql-*, /usr/bin/systemctl * postgresql*, /bin/systemctl * postgresql*, /bin/su postgres, /bin/su - postgres'
 
   group { 'postgresql-admin':
     ensure => present,

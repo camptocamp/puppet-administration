@@ -7,7 +7,7 @@ User_Alias NGINX_ADMIN = %nginx-admin
 <% if @sudo_cmnd -%>
 Cmnd_Alias NGINX_ADMIN = <%= @sudo_cmnd %>
 <% else -%>
-Cmnd_Alias NGINX_ADMIN = /etc/init.d/nginx, /usr/bin/systemctl * nginx, /bin/su <%= @nginx_user %>, /bin/su - <%= @nginx_user %>, /usr/sbin/nginx
+Cmnd_Alias NGINX_ADMIN = /etc/init.d/nginx, /usr/bin/systemctl * nginx, /bin/systemctl * nginx, /bin/su <%= @nginx_user %>, /bin/su - <%= @nginx_user %>, /usr/sbin/nginx
 <% end -%>
 NGINX_ADMIN ALL=(<%= @nginx_user %>) ALL : ALL=(root) NGINX_ADMIN
 ##
