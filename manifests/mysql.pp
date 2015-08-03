@@ -4,8 +4,8 @@ class administration::mysql (
 
   $sudo_user_alias = flatten(['%mysql-admin', $sudo_user])
   $sudo_cmnd = $::osfamily ? {
-    'Debian' => '/etc/init.d/mysql',
-    'RedHat' => '/etc/init.d/mysqld, /sbin/service mysqld',
+    'Debian' => '/etc/init.d/mysql, /bin/systemctl * mysql',
+    'RedHat' => '/etc/init.d/mysqld, /sbin/service mysqld, /usr/bin/systemctl * mysql',
   }
 
   ensure_resource(

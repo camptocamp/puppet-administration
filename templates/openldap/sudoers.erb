@@ -7,7 +7,7 @@ User_Alias OPENLDAP_ADMIN = %openldap-admin
 <% if @admin_cmnd -%>
 Cmnd_Alias OPENLDAP_ADMIN = <%= @admin_cmnd %>
 <% else -%>
-Cmnd_Alias OPENLDAP_ADMIN = /etc/init.d/slapd, /usr/sbin/slapadd, /usr/sbin/slapcat
+Cmnd_Alias OPENLDAP_ADMIN = /etc/init.d/slapd, /usr/bin/systemd * slapd, /bin/systemctl * slapd, /usr/sbin/slapadd, /usr/sbin/slapcat
 <% end -%>
 OPENLDAP_ADMIN ALL=(openldap) ALL : ALL=(root) OPENLDAP_ADMIN
 ##
