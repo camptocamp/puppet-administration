@@ -1,0 +1,14 @@
+## File managed by Puppet
+<% if @sudo_user -%>
+User_Alias VARNISH_ADMIN = %varnish-admin,<%= @sudo_user %>
+<% else -%>
+User_Alias VARNISH_ADMIN = %varnish-admin
+<% end -%>
+<% if @sudo_cmnd -%>
+Cmnd_Alias VARNISH_ADMIN = <%= @sudo_cmnd %>
+<% else -%>
+Cmnd_Alias VARNISH_ADMIN = /etc/init.d/varnish, /usr/bin/systemctl * varnish, /bin/systemctl * varnish, /usr/share/varnish/reload-vcl
+<% end -%>
+VARNISH_ADMIN ALL=(root) VARNISH_ADMIN
+##
+
