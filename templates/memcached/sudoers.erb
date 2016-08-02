@@ -1,0 +1,6 @@
+## File managed by Puppet
+User_Alias MEMCACHED_ADMIN = <%= @sudo_user_alias.select { |a| not (a == :undef or a.empty?) }.join(', ') %>
+Cmnd_Alias MEMCACHED_ADMIN = <%= @sudo_cmnd %>
+MEMCACHED_ADMIN ALL=(root) MEMCACHED_ADMIN
+##
+
