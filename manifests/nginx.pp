@@ -13,8 +13,8 @@ class administration::nginx(
     ensure => present,
     system => true,
   }
-  ->
-  sudo::conf { 'nginx-administration':
+  
+  -> sudo::conf { 'nginx-administration':
     ensure  => present,
     content => template('administration/nginx/sudoers.erb'),
   }

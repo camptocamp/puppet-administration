@@ -5,8 +5,8 @@ class administration::varnish(
     ensure => present,
     system => true,
   }
-  ->
-  sudo::conf { 'varnish-administration':
+  
+  -> sudo::conf { 'varnish-administration':
     ensure  => present,
     content => template('administration/varnish/sudoers.erb'),
   }
