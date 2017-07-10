@@ -16,7 +16,7 @@ class administration::tomcat (
 
   $sudo_group = '%tomcat-admin'
   $sudo_user_alias = flatten([$sudo_group, $sudo_user])
-  $sudo_cmnd = '/etc/init.d/tomcat-*, /usr/bin/systemctl * tomcat, /bin/systemctl * tomcat, /bin/su tomcat, /bin/su - tomcat'
+  $sudo_cmnd = '/etc/init.d/tomcat-*, /usr/bin/systemctl * tomcat, /bin/systemctl * tomcat, /bin/systemctl * tomcat-*, /bin/su tomcat, /bin/su - tomcat'
 
   group { 'tomcat-admin':
     ensure => present,
