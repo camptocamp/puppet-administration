@@ -1,6 +1,6 @@
 ## File managed by Puppet
 User_Alias APACHE_ADMIN = <%= @sudo_user_alias.select { |a| not (a == :undef or a.empty?) }.join(', ') %>
 Cmnd_Alias APACHE_ADMIN = <%= @sudo_cmnd %>
-APACHE_ADMIN ALL=(<%= @wwwuser %>) ALL : ALL=(root) APACHE_ADMIN
+APACHE_ADMIN ALL=(<%= @apache_user %>) ALL : ALL=(root) APACHE_ADMIN
 ##
 
