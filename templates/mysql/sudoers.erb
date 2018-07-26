@@ -1,5 +1,5 @@
 ## File managed by Puppet
-User_Alias MYSQL_ADMIN_USER = <%= @sudo_user_alias.select { |a| not (a == :undef or a.empty?) }.join(', ') %>
+User_Alias MYSQL_ADMIN_USER = <%= @sudo_user_alias.select { |a| not (a == :undef or a.nil? or a.empty?) }.join(', ') %>
 Cmnd_Alias MYSQL_ADMIN_CMND = <%= @sudo_cmnd %>
 MYSQL_ADMIN_USER ALL=(root) MYSQL_ADMIN_CMND
 ##
