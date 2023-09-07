@@ -1,5 +1,7 @@
-class administration::nginx(
-  $sudo_user = undef,
+# @summary This class installs and configures nginx administration
+# @param sudo_user [String] The user that will be allowed to run nginx commands
+class administration::nginx (
+  String $sudo_user = undef,
 ) {
   $nginx_user = $::operatingsystem ? {
     'Debian' => 'www-data',
@@ -18,5 +20,4 @@ class administration::nginx(
     ensure  => present,
     content => template('administration/nginx/sudoers.erb'),
   }
-
 }

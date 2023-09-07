@@ -7,8 +7,9 @@
 # Requires:
 #  - definition sudo::conf from module saz/puppet-sudo
 #
+# @param sudo_user [String] The user that should be allowed to administer
 class administration::postgresql (
-  $sudo_user = undef,
+  String $sudo_user = undef,
 ) {
   $sudo_group = '%postgresql-admin'
   $sudo_user_alias = flatten([$sudo_group, $sudo_user])
@@ -24,6 +25,4 @@ class administration::postgresql (
     content => template('administration/postgresql/sudoers.erb'),
     require => Group['postgresql-admin'],
   }
-
 }
-

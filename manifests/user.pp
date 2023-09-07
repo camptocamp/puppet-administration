@@ -1,11 +1,12 @@
+# @summary Manage sudo access for a user to run 'su - <user>' without a password
+# @param name The name of the user
 define administration::user (
-  $ensure = present,
-  $from   = undef,
+  String $ensure = present,
+  String $from   = undef,
 ) {
-
   case $ensure {
     'absent': {
-      sudo::conf {"sudo-su-${name}":
+      sudo::conf { "sudo-su-${name}":
         ensure => absent,
       }
     }
@@ -23,7 +24,7 @@ define administration::user (
         }
       }
 
-      sudo::conf {"sudo-su-${name}":
+      sudo::conf { "sudo-su-${name}":
         ensure  => $ensure,
         content => "${_from} ALL=(root) NOPASSWD: /bin/su - ${name}\n",
       }
@@ -31,5 +32,4 @@ define administration::user (
 
     default: { fail "'ensure' must be 'present' or 'absent' in administration::user[${name}]" }
   }
-
 }
