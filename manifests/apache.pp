@@ -1,14 +1,18 @@
 # == Class administration::apache
 #
+# This class manages sudo access for apache administration.
+# @param sudo_user [String] The user to grant sudo access to.
+# @param service_user [String] The user that the apache service runs as.
+# @param service_name [String] The name of the apache service.
+# @param additional_commands [Array] Additional commands to allow sudo access to.
 class administration::apache (
-  $sudo_user = undef,
-  $service_user = undef,
-  $service_name = undef,
-  $additional_commands = undef,
+  String $sudo_user = undef,
+  String $service_user = undef,
+  String $service_name = undef,
+  String $additional_commands = undef,
 ) {
-
   $_additional_commands = $additional_commands ? {
-    undef => $::osfamily ? {
+    undef => $::os['family'] ? {
       'Debian' => '/usr/sbin/apache2ctl',
       'RedHat' => '/usr/sbin/apachectl, /sbin/service httpd',
     },
@@ -16,7 +20,7 @@ class administration::apache (
   }
 
   $_service_name = $service_name ? {
-    undef => $::osfamily ? {
+    undef => $::os['family'] ? {
       'Debian' => 'apache2',
       'RedHat' => 'httpd',
     },
@@ -24,7 +28,7 @@ class administration::apache (
   }
 
   $_service_user = $service_user ? {
-    undef => $::osfamily ? {
+    undef => $::os['family'] ? {
       'Debian' => 'www-data',
       'RedHat' => 'apache',
     },
@@ -45,5 +49,4 @@ class administration::apache (
     content => template('administration/apache/sudoers.erb'),
     require => Group['apache-admin'],
   }
-
 }

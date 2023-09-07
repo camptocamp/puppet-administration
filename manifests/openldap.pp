@@ -1,5 +1,7 @@
-class administration::openldap(
-  $sudo_user = undef,
+# @summary Configure OpenLDAP administration
+# @param sudo_user The user to allow to run the OpenLDAP administration commands
+class administration::openldap (
+  String $sudo_user = undef,
 ) {
   group { 'openldap-admin':
     ensure => present,
